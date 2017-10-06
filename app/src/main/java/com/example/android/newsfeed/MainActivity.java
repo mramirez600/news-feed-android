@@ -37,7 +37,11 @@ public class MainActivity
                 String url = news.url;
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
-                startActivity(intent);
+                if (intent.resolveActivity(getPackageManager()) != null) {
+
+                    startActivity(intent);
+
+                }
             }
         });
         getSupportLoaderManager().initLoader(LOADER_ID, null, this);
